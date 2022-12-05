@@ -18,46 +18,15 @@
         ?>
         <div class="row">
 
-            <div class="col-sm-12 col-md-5">
-                <br>
-                <h3>Agregar Estudiante</h3>
-                <hr>
-                <form action="agregar.php" method="post" id="frmAgregar" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label for="txtnom" class="form-label">Nombre</label>
-                            <input type="text" required name="txtnom" id="txtnom" class="form-control">
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="txtape" class="form-label">Apellido</label>
-                            <input type="text" required name="txtape" id="txtape" class="form-control">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="txtcod" class="form-label">Numero Documento</label>
-                        <input type="number" required min="10" name="txtcod" id="txtcod" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label for="txtcorreo" class="form-label">Correo Electrónico</label>
-                        <input type="email" required name="txtcorreo" id="txtcorreo" class="form-control">
-                    </div>
-                    <hr>
-                    <br>
-                    <input type="submit" value="Agregar" class="btn btn-primary btn-lg">
-                    <a href="editar1.php" ><input type="button" value="Editar" class="btn bg-warning btn-lg"></a>
-                    <a href="eliminar1.php" ><input type="button" value="Eliminar" class="btn btn-danger btn-lg"></a>
-                    <input type="reset" value="Limpiar" class="btn btn-secondary btn-lg">
-                </form>
-            </div>
-
             <div class="col-sm-12 col-md-7">
                 <br>
                 <h3>Lista de Estudiantes</h3>
                 <hr>
-                <form action="editar.php" method="post" id="editar" enctype="multipart/form-data">
+                <form action="editar2.php" method="post" id="editar" enctype="multipart/form-data">
                     <table class="table">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Código</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
@@ -73,6 +42,7 @@
                             $datos = mysqli_query($bd, $sql);
                             while ($arr = mysqli_fetch_array($datos)) {
                                 echo "<tr>";
+                                echo "<td><input type='radio' name='victima' value='$arr[0]' required></td>";
                                 echo "<td>$arr[0]</td>";
                                 echo "<td>$arr[1]</td>";
                                 echo "<td>$arr[2]</td>";
@@ -83,6 +53,7 @@
                             ?>
                         </tbody>
                     </table>
+                    <input type="submit" value="Seleccionar" class="btn btn-primary btn-lg">
                 </form>
             </div>
         </div>
